@@ -22,33 +22,42 @@ class ExpenseTable extends Component {
         Amount/{point.name}
       </div>
     ));
-    const expenseRow = this.state.table.expenses.map((expense) => (
-      <div className="row">
-        <div className="cell">{expense.name}</div>
-        <div className="cell align-center">{expense.amount}</div>
-        {
-          this.state.table.points.map((point) => (
-            <div className="cell align-center">
-              {expense.amount * point.amountPercent}
-            </div>
-          ))
-        }
-        <div className="cell cell-comment">{expense.comment}</div>
-      </div>
-    ));
-    const incomeRow = this.state.table.incomes.map((income) => (
-      <div className="row">
-        <div className="cell">{income.name}</div>
-        <div className="cell align-center">{income.amount}</div>
-        {
-          this.state.table.points.map((point) => (
-            <div className="cell align-center">
-              {income.amount * point.amountPercent}
-            </div>
-          ))
-        }
-      </div>
-    ));
+    let expenseAmount = 0;
+    const expenseRow = this.state.table.expenses.map((expense) => {
+      expenseAmount += Number(expense.amount);
+      return (
+        <div className="row">
+          <div className="cell">{expense.name}</div>
+          <div className="cell align-center">{expense.amount}</div>
+          {
+            this.state.table.points.map((point) => (
+              <div className="cell align-center">
+                {expense.amount * point.amountPercent}
+              </div>
+            ))
+          }
+          <div className="cell cell-comment">{expense.comment}</div>
+        </div>
+      );
+    });
+    let incomeAmount = 0;
+    const incomeRow = this.state.table.incomes.map((income) => {
+      incomeAmount += Number(income.amount);
+      return (
+        <div className="row">
+          <div className="cell">{income.name}</div>
+          <div className="cell align-center">{income.amount}</div>
+          {
+            this.state.table.points.map((point) => (
+              <div className="cell align-center">
+                {income.amount * point.amountPercent}
+              </div>
+            ))
+          }
+        </div>
+      )
+    });
+    const balance = incomeAmount - expenseAmount;
 
     return (
       <div className="expense-table">
@@ -93,6 +102,19 @@ class ExpenseTable extends Component {
           <div className="cell button-action align-center">
             Add Income
           </div>
+        </div>
+        <div className="row row-bold row-blue">
+          <div className="cell">Balance</div>
+          <div className="cell align-center">
+            {balance}
+          </div>
+          {
+            this.state.table.points.map((point) => (
+              <div className="cell align-center">
+                {balance * point.amountPercent}
+              </div>
+            ))
+          }
         </div>
       </div>
     );

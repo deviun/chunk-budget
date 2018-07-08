@@ -41,4 +41,10 @@
     font-size: 14px;
     opacity: 0.5;
   }
+
+  .row-blue {
+    .cell {
+      background: rgba(0, 166, 255, 0.3);
+    }
+  }
 }
