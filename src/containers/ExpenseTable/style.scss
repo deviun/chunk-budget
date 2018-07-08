@@ -33,6 +33,10 @@
 
   .row-bold {
     font-weight: bold;
+    
+    .cell {
+      background: none !important;
+    }
   }
 
   .cell-comment {

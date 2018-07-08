@@ -103,7 +103,7 @@ class ExpenseTable extends Component {
             Add Income
           </div>
         </div>
-        <div className="row row-bold row-blue">
+        <div className="row row-blue">
           <div className="cell">Balance</div>
           <div className="cell align-center">
             {balance}
