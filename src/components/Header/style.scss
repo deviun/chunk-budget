@@ -1,0 +1,32 @@
+.main-header {
+  width: 100%;
+  background: #00A6FF;
+  position: relative;
+  overflow: hidden;
+  padding: 25px;
+}
+
+.logo-text {
+  color: white;
+  font-family: Arial;
+  font-weight: bold;
+  font-size: 40px;
+}
+
+.right-button {
+  position: absolute;
+  right: 100px;
+  top: 32px;
+
+  button {
+    border: none;
+    background: #77D353;
+    border-radius: 5px;
+    color: white;
+    padding: 10px 20px;
+    margin: 0px 5px;
+    cursor: pointer;
+    font-size: 14px;
+    outline: none;
+  }
+}

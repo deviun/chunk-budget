@@ -1,8 +1,6 @@
 import { combineReducers } from 'redux';
-import articlesList from './articlesList';
-import someText from './someText';
+import welcome from './welcome';
 
 export default combineReducers({
-  articlesList,
-  someText
+  welcome
 });

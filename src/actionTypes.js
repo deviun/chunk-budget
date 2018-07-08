@@ -1,2 +1,1 @@
-export const DELETE_ARTICLE = 'DELETE_ARTICLE';
-export const CHANGE_SOME_TEXT = 'CHANGE_SOME_TEXT';
+export const START_APP = 'START_APP';
