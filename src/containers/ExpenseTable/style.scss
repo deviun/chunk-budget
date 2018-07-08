@@ -34,4 +34,11 @@
   .row-bold {
     font-weight: bold;
   }
+
+  .cell-comment {
+    background: none !important;
+    font-style: italic;
+    font-size: 14px;
+    opacity: 0.5;
+  }
 }

@@ -33,6 +33,7 @@ class ExpenseTable extends Component {
             </div>
           ))
         }
+        <div className="cell cell-comment">{expense.comment}</div>
       </div>
     ));
     const incomeRow = this.state.table.incomes.map((income) => (
