@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import publicURL from '../../abstract/publicURL';
 
 // actions
 import startApp from '../../actions/startApp';
 
 // styles
 import './style.css';
-
-const PUBLIC_URL = process.env.PUBLIC_URL;
 
 class WelcomePage extends Component {
   constructor(props) {
@@ -21,7 +20,7 @@ class WelcomePage extends Component {
     return (
       <div className="welcome-page">
         <div className="icon">
-          <img src={PUBLIC_URL + '/img/wallet.svg'} />
+          <img src={publicURL('/img/wallet.svg')} />
         </div>
         <div className="description">
           App for balancing expenses.
