@@ -1,0 +1,37 @@
+.expense-table {
+  padding: 10px;
+  display: table;
+  margin: 20px auto;
+  font-family: Arial;
+
+  .button-action {
+    color: #00A6FF;
+    cursor: pointer;
+    text-decoration: underline;
+    background: none !important;
+    font-weight: 100 !important;
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+
+  .row {
+    display: table-row;
+  }
+
+  .cell {
+    display: table-cell;
+    padding: 18px;
+    background: rgba(36, 214, 116, 0.3);
+    border: 2px solid white;
+  }
+
+  .align-center {
+    text-align: center;
+  }
+
+  .row-bold {
+    font-weight: bold;
+  }
+}

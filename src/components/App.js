@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 
 import Header from './Header';
 import WelcomePage from './WelcomePage';
+import ExpenseTable from '../containers/ExpenseTable';
 
 class App extends Component {
   constructor (props) {
@@ -24,6 +25,7 @@ class App extends Component {
       <div>
         <Header />
         {this.state.isWelcome && <WelcomePage />}
+        {!this.state.isWelcome && <ExpenseTable />}
       </div>
     );
   }
