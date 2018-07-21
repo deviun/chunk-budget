@@ -6,7 +6,6 @@ export default function welcome(state = {
   switch (action.type) {
     case START_APP:
       return {mode: false};
-    break;
 
     default:
       return state;
