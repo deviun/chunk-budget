@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import publicURL from '../../abstract/publicURL';
+import PropTypes from 'prop-types';
 
 // actions
 import startApp from '../../actions/startApp';
@@ -11,7 +12,7 @@ import './style.css';
 class WelcomePage extends Component {
   constructor(props) {
     super(props);
-    
+
     this.startApp = props.startApp;
   }
 
@@ -29,6 +30,10 @@ class WelcomePage extends Component {
     );
   }
 }
+
+WelcomePage.propTypes = {
+  startApp: PropTypes.func.isRequired
+};
 
 function mapDispatchToProps (dispatch) {
   return {

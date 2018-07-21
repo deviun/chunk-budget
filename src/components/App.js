@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 
 import Header from './Header';
 import WelcomePage from './WelcomePage';
 import ExpenseTable from '../containers/ExpenseTable';
 
 class App extends Component {
-  constructor (props) {
-    super(props);
-  }
-
   render () {
     return (
       <div>
@@ -20,6 +17,10 @@ class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  isWelcome: PropTypes.bool.isRequired
+};
 
 function mapStateToProps (state) {
   return {

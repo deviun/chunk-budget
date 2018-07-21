@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import './style.css';
 
 class ExpenseTable extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const pointsCell = this.props.table.points.map((point) => (
       <div className="cell" key={point.id}>
@@ -112,6 +109,27 @@ class ExpenseTable extends Component {
     );
   }
 }
+
+ExpenseTable.propTypes = {
+  table: PropTypes.shape({
+    expenses: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      amount: PropTypes.number.isRequired,
+      comment: PropTypes.string
+    })),
+    points: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      amountPercent: PropTypes.number.isRequired
+    })),
+    incomes: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      amount: PropTypes.number.isRequired
+    }))
+  })
+};
 
 function mapStateToProps (state) {
   return {

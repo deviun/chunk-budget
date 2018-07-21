@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import './style.css';
 
 class Header extends Component {
-  constructor (props) {
-    super(props);
-  }
-
   render () {
     const RightButton = (
       <div className="right-button">
@@ -24,6 +21,10 @@ class Header extends Component {
     );
   }
 }
+
+Header.propTypes = {
+  isWelcome: PropTypes.bool.isRequired
+};
 
 function mapStateToProps(state) {
   return {
