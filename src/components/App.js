@@ -8,24 +8,14 @@ import ExpenseTable from '../containers/ExpenseTable';
 class App extends Component {
   constructor (props) {
     super(props);
-
-    this.state = {
-      isWelcome: props.isWelcome
-    };
-  }
-
-  componentWillReceiveProps (nextProps) {
-    this.setState({
-      isWelcome: nextProps.isWelcome
-    });
   }
 
   render () {
     return (
       <div>
         <Header />
-        {this.state.isWelcome && <WelcomePage />}
-        {!this.state.isWelcome && <ExpenseTable />}
+        {this.props.isWelcome && <WelcomePage />}
+        {!this.props.isWelcome && <ExpenseTable />}
       </div>
     );
   }

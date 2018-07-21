@@ -6,31 +6,23 @@ import './style.css';
 class ExpenseTable extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      table: props.table
-    };
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({});
   }
 
   render() {
-    const pointsCell = this.state.table.points.map((point) => (
+    const pointsCell = this.props.table.points.map((point) => (
       <div className="cell" key={point.id}>
         Amount/{point.name}
       </div>
     ));
     let expenseAmount = 0;
-    const expenseRow = this.state.table.expenses.map((expense) => {
+    const expenseRow = this.props.table.expenses.map((expense) => {
       expenseAmount += Number(expense.amount);
       return (
         <div className="row">
           <div className="cell">{expense.name}</div>
           <div className="cell align-center">{expense.amount}</div>
           {
-            this.state.table.points.map((point) => (
+            this.props.table.points.map((point) => (
               <div className="cell align-center">
                 {expense.amount * point.amountPercent}
               </div>
@@ -41,14 +33,14 @@ class ExpenseTable extends Component {
       );
     });
     let incomeAmount = 0;
-    const incomeRow = this.state.table.incomes.map((income) => {
+    const incomeRow = this.props.table.incomes.map((income) => {
       incomeAmount += Number(income.amount);
       return (
         <div className="row">
           <div className="cell">{income.name}</div>
           <div className="cell align-center">{income.amount}</div>
           {
-            this.state.table.points.map((point) => (
+            this.props.table.points.map((point) => (
               <div className="cell align-center">
                 {income.amount * point.amountPercent}
               </div>
@@ -109,7 +101,7 @@ class ExpenseTable extends Component {
             {balance}
           </div>
           {
-            this.state.table.points.map((point) => (
+            this.props.table.points.map((point) => (
               <div className="cell align-center">
                 {balance * point.amountPercent}
               </div>

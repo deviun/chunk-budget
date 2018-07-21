@@ -6,16 +6,6 @@ import './style.css';
 class Header extends Component {
   constructor (props) {
     super(props);
-
-    this.state = {
-      isWelcome: props.isWelcome
-    };
-  }
-
-  componentWillReceiveProps (nextProps) {
-    this.setState({
-      isWelcome: nextProps.isWelcome
-    });
   }
 
   render () {
@@ -29,7 +19,7 @@ class Header extends Component {
     return (
       <div className="main-header">
         <div className="logo-text">Chunk Budget</div>
-        {!this.state.isWelcome && RightButton}
+        {!this.props.isWelcome && RightButton}
       </div>
     );
   }

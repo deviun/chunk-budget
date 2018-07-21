@@ -11,8 +11,7 @@ import './style.css';
 class WelcomePage extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {};
+    
     this.startApp = props.startApp;
   }
 
