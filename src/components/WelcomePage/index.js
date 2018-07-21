@@ -20,7 +20,7 @@ class WelcomePage extends Component {
     return (
       <div className="welcome-page">
         <div className="icon">
-          <img src={publicURL('/img/wallet.svg')} />
+          <img src={publicURL('/img/wallet.svg')} alt="" />
         </div>
         <div className="description">
           App for balancing expenses.
