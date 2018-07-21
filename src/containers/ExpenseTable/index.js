@@ -7,7 +7,7 @@ import './style.css';
 class ExpenseTable extends Component {
   render() {
     const pointsCell = this.props.table.points.map((point) => (
-      <div className="cell" key={point.id}>
+      <div className="cell" key={'point-' + point.id}>
         Amount/{point.name}
       </div>
     ));
@@ -15,12 +15,12 @@ class ExpenseTable extends Component {
     const expenseRow = this.props.table.expenses.map((expense) => {
       expenseAmount += Number(expense.amount);
       return (
-        <div className="row">
+        <div className="row" key={'expense-' + expense.id}>
           <div className="cell">{expense.name}</div>
           <div className="cell align-center">{expense.amount}</div>
           {
             this.props.table.points.map((point) => (
-              <div className="cell align-center">
+              <div className="cell align-center" key={'expense-' + point.id}>
                 {expense.amount * point.amountPercent}
               </div>
             ))
@@ -33,12 +33,12 @@ class ExpenseTable extends Component {
     const incomeRow = this.props.table.incomes.map((income) => {
       incomeAmount += Number(income.amount);
       return (
-        <div className="row">
+        <div className="row" key={'income-' + income.id}>
           <div className="cell">{income.name}</div>
           <div className="cell align-center">{income.amount}</div>
           {
             this.props.table.points.map((point) => (
-              <div className="cell align-center">
+              <div className="cell align-center" key={'income-' + point.id}>
                 {income.amount * point.amountPercent}
               </div>
             ))
@@ -51,33 +51,33 @@ class ExpenseTable extends Component {
     return (
       <div className="expense-table">
         {/* first row */}
-        <div className="row row-bold">
-          <div className="cell">
+        <div className="row row-bold" key="row-1">
+          <div className="cell" key="cell-1">
             Expense
           </div>
-          <div className="cell">
+          <div className="cell" key="cell-2">
             Amount/Period
           </div>
           {/* << render point cell titles */}
           {pointsCell}
           {/* end >> */}
-          <div className="cell button-action">
+          <div className="cell button-action" key="cell-3">
             Add Point
           </div>
         </div>
         {/* << render expense rows */}
         {expenseRow}
         {/* end >> */}
-        <div className="row">
-          <div className="cell button-action align-center">
+        <div className="row" key="row-2">
+          <div className="cell button-action align-center" key="cell-1">
             Add Expense
           </div>
         </div>
-        <div className="row row-bold">
-          <div className="cell">
+        <div className="row row-bold" key="row-3">
+          <div className="cell" key="cell-1">
             Income
           </div>
-          <div className="cell">
+          <div className="cell" key="cell-2">
             Amount/Period
           </div>
           {/* << render point cell titles */}
@@ -87,19 +87,19 @@ class ExpenseTable extends Component {
         {/* << render incomes rows */}
         {incomeRow}
         {/* end >> */}
-        <div className="row">
-          <div className="cell button-action align-center">
+        <div className="row" key="row-4">
+          <div className="cell button-action align-center" key="cell-1">
             Add Income
           </div>
         </div>
-        <div className="row row-blue">
-          <div className="cell">Balance</div>
-          <div className="cell align-center">
+        <div className="row row-blue" key="row-5">
+          <div className="cell" key="cell-1">Balance</div>
+          <div className="cell align-center" key="cell-2">
             {balance}
           </div>
           {
             this.props.table.points.map((point) => (
-              <div className="cell align-center">
+              <div className="cell align-center" key={'balance-point-' + point.id}>
                 {balance * point.amountPercent}
               </div>
             ))
