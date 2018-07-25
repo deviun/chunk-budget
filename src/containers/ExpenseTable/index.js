@@ -31,6 +31,7 @@ class ExpenseTable extends Component {
             classNames={['align-center']}
             type="expense"
             id={expense.id}
+            editInputType="number"
             сkey={'expense-value-' + expense.id}
             value={expense.amount}
             editMode={get(expense, 'editMode.amount')}
@@ -60,8 +61,24 @@ class ExpenseTable extends Component {
       incomeAmount += Number(income.amount);
       return (
         <div className="row" key={'income-' + income.id}>
-          <div className="cell">{income.name}</div>
-          <div className="cell align-center">{income.amount}</div>
+          <ChangeableCell
+            type="income"
+            id={income.id}
+            сkey={'income-name-' + income.id}
+            value={income.name}
+            editMode={get(income, 'editMode.name')}
+            propName="name"
+          />
+          <ChangeableCell
+            classNames={['align-center']}
+            type="income"
+            id={income.id}
+            editInputType="number"
+            сkey={'income-value-' + income.id}
+            value={income.amount}
+            editMode={get(income, 'editMode.amount')}
+            propName="amount"
+          />
           {
             this.props.table.points.map((point) => (
               <div className="cell align-center" key={'income-' + point.id}>
