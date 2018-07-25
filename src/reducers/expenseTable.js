@@ -1,5 +1,6 @@
 import {
-  TURN_EDIT_CELL
+  TURN_EDIT_CELL,
+  SAVE_CELL_VALUE
 } from '../actionTypes';
 
 const testExpenseTable = {
@@ -38,19 +39,36 @@ const mapCellTypeToTableGroup = {
 };
 
 export default function expenseTable(state = testExpenseTable, action) {
-  switch (action.type) {
-    case TURN_EDIT_CELL:
-      const newState = {...state};
-      const cell = newState[mapCellTypeToTableGroup[action.cellType]].find((item) => item.id === action.id);
+  if (action.type === TURN_EDIT_CELL) {
+    const newState = { ...state };
+    const cell = newState[mapCellTypeToTableGroup[action.cellType]].find((item) => item.id === action.id);
 
-      if (!cell.editMode) {
-        cell.editMode = {};
+    if (!cell.editMode) {
+      cell.editMode = {};
+    }
+
+    Object.keys(cell).forEach((prop) => {
+      if (prop === 'editMode') {
+        return false;
       }
 
-      cell.editMode[action.propName] = !cell.editMode[action.propName];
+      if (prop === action.propName) {
+        cell.editMode[action.propName] = !cell.editMode[action.propName];
+      } else {
+        cell.editMode[prop] = false;
+      }
+    });
 
-      return newState;
-    default:
-      return state;
-  }
+    return newState;
+  } else if (action.type === SAVE_CELL_VALUE) {
+    const newState = { ...state };
+
+    const cell = newState[mapCellTypeToTableGroup[action.cellType]].find((item) => item.id === action.id);
+    
+    cell[action.propName] = action.value;
+
+    return newState;
+  } 
+
+  return state;
 }
