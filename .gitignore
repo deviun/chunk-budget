@@ -22,3 +22,5 @@ yarn-error.log*
 
 # CSS copy of component styles
 src/**/*.css
+
+package-lock.json
