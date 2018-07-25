@@ -43,7 +43,11 @@ export default function expenseTable(state = testExpenseTable, action) {
       const newState = {...state};
       const cell = newState[mapCellTypeToTableGroup[action.cellType]].find((item) => item.id === action.id);
 
-      cell.editMode = !cell.editMode;
+      if (!cell.editMode) {
+        cell.editMode = {};
+      }
+
+      cell.editMode[action.propName] = !cell.editMode[action.propName];
 
       return newState;
     default:
