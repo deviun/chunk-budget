@@ -1,0 +1,37 @@
+.main-header {
+  width: calc(100% - 50px);
+  background: #00A6FF;
+  position: relative;
+  overflow: hidden;
+  padding: 25px;
+}
+
+.logo-text {
+  color: white;
+  font-family: Arial;
+  font-weight: bold;
+  margin-left: 100px;
+  font-size: 30px;
+}
+
+.right-button {
+  position: absolute;
+  right: 100px;
+  top: 25px;
+
+  button {
+    border: none;
+    background: rgb(112, 223, 68);
+    border-radius: 5px;
+    color: white;
+    padding: 10px 20px;
+    margin: 0px 5px;
+    cursor: pointer;
+    font-size: 14px;
+    outline: none;
+
+    &:hover {
+      background: #77D353;
+    }
+  }
+}

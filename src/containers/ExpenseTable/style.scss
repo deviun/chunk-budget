@@ -1,0 +1,84 @@
+.expense-table {
+  padding: 10px;
+  display: table;
+  margin: 20px auto;
+  font-family: Arial;
+
+  .button-action {
+    color: #00A6FF;
+    cursor: pointer;
+    text-decoration: underline;
+    background: none !important;
+    font-weight: 100 !important;
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+
+  .row {
+    display: table-row;
+  }
+
+  .cell {
+    display: table-cell;
+    padding: 18px;
+    background: rgba(36, 214, 116, 0.3);
+    border: 2px solid white;
+    font-size: 17px;
+  }
+
+  .changeable-cell {
+    cursor: pointer;
+    text-decoration: underline;
+
+    input {
+      border: none;
+      background: none;
+      outline: none;
+      font-size: 17px;
+      width: 100px;
+    }
+
+    &:hover {
+      -webkit-mask-image: linear-gradient(-75deg, rgba(0,0,0,.6) 30%, #000 50%, rgba(0,0,0,.6) 70%);
+      -webkit-mask-size: 200%;
+      animation: shine 2s infinite;
+    }
+
+    @-webkit-keyframes shine {
+      from {
+        -webkit-mask-position: 150%;
+      }
+      
+      to {
+        -webkit-mask-position: -50%;
+      }
+    }
+  }
+
+  .align-center {
+    text-align: center;
+  }
+
+  .row-bold {
+    font-weight: bold;
+    
+    .cell {
+      background: none !important;
+    }
+  }
+
+  .cell-comment {
+    background: none !important;
+    font-style: italic;
+    font-size: 14px;
+    opacity: 0.5;
+  }
+
+  .row-blue {
+    .cell {
+      background: rgba(0, 166, 255, 0.3);
+    }
+  }
+}

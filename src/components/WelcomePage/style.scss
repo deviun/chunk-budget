@@ -1,0 +1,35 @@
+.welcome-page {
+  margin-top: 120px;
+
+  .icon {
+    padding: 20px 0px;
+    text-align: center;
+
+    img {
+      height: 170px;
+    }
+  }
+
+  .description {
+    text-align: center;
+    width: 100%;
+    max-width: 270px;
+    margin: 20px auto;
+    font-size: 16px;
+    color: rgb(153, 153, 153);
+    font-family: Arial;
+  }
+
+  .start-button {
+    border: none;
+    background: #00A6FF;
+    color: white;
+    border-radius: 5px;
+    font-size: 15px;
+    padding: 10px 25px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    outline: none;
+  }
+}
