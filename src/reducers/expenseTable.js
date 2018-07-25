@@ -1,4 +1,6 @@
-// import { ADD_POINT, ADD_EXPENSE } from '../actionTypes';
+import {
+  TURN_EDIT_CELL
+} from '../actionTypes';
 
 const testExpenseTable = {
   expenses: [
@@ -29,8 +31,21 @@ const testExpenseTable = {
   ] 
 };
 
+const mapCellTypeToTableGroup = {
+  expense: 'expenses',
+  point: 'points',
+  income: 'incomes'
+};
+
 export default function expenseTable(state = testExpenseTable, action) {
   switch (action.type) {
+    case TURN_EDIT_CELL:
+      const newState = {...state};
+      const cell = newState[mapCellTypeToTableGroup[action.cellType]].find((item) => item.id === action.id);
+
+      cell.editMode = !cell.editMode;
+
+      return newState;
     default:
       return state;
   }

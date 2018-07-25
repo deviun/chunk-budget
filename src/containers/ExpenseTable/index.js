@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 
 import './style.css';
 
+import ChangeableCell from '../../components/ChangeableCell';
+
 class ExpenseTable extends Component {
   render() {
     const pointsCell = this.props.table.points.map((point) => (
@@ -17,7 +19,13 @@ class ExpenseTable extends Component {
       return (
         <div className="row" key={'expense-' + expense.id}>
           <div className="cell">{expense.name}</div>
-          <div className="cell align-center">{expense.amount}</div>
+          <ChangeableCell 
+            classNames={['cell', ' align-center']}
+            type="expense"
+            id={expense.id}
+            value={expense.amount}
+            editMode={expense.editMode}
+          />
           {
             this.props.table.points.map((point) => (
               <div className="cell align-center" key={'expense-' + point.id}>
@@ -116,17 +124,20 @@ ExpenseTable.propTypes = {
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
       amount: PropTypes.number.isRequired,
-      comment: PropTypes.string
+      comment: PropTypes.string,
+      editMode: PropTypes.bool
     })),
     points: PropTypes.arrayOf(PropTypes.shape({
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
-      amountPercent: PropTypes.number.isRequired
+      amountPercent: PropTypes.number.isRequired,
+      editMode: PropTypes.bool
     })),
     incomes: PropTypes.arrayOf(PropTypes.shape({
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
-      amount: PropTypes.number.isRequired
+      amount: PropTypes.number.isRequired,
+      editMode: PropTypes.bool
     }))
   })
 };
