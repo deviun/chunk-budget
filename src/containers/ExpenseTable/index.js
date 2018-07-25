@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import get from 'lodash/get';
 
 import './style.css';
 
@@ -18,22 +19,39 @@ class ExpenseTable extends Component {
       expenseAmount += Number(expense.amount);
       return (
         <div className="row" key={'expense-' + expense.id}>
-          <div className="cell">{expense.name}</div>
-          <ChangeableCell 
-            classNames={['cell', ' align-center']}
+          <ChangeableCell
             type="expense"
             id={expense.id}
+            сkey={'expense-name-' + expense.id}
+            value={expense.name}
+            editMode={get(expense, 'editMode.name')}
+            propName="name"
+          />
+          <ChangeableCell 
+            classNames={['align-center']}
+            type="expense"
+            id={expense.id}
+            сkey={'expense-value-' + expense.id}
             value={expense.amount}
-            editMode={expense.editMode}
+            editMode={get(expense, 'editMode.amount')}
+            propName="amount"
           />
           {
             this.props.table.points.map((point) => (
-              <div className="cell align-center" key={'expense-' + point.id}>
+              <div className="cell align-center" key={'expense-point-' + point.id}>
                 {expense.amount * point.amountPercent}
               </div>
             ))
           }
-          <div className="cell cell-comment">{expense.comment}</div>
+          <ChangeableCell
+            classNames={['cell-comment']}
+            type="expense"
+            id={expense.id}
+            сkey={'expense-comment-' + expense.id}
+            value={expense.comment}
+            editMode={get(expense, 'editMode.comment')}
+            propName="comment"
+          />
         </div>
       );
     });
@@ -125,19 +143,19 @@ ExpenseTable.propTypes = {
       name: PropTypes.string.isRequired,
       amount: PropTypes.number.isRequired,
       comment: PropTypes.string,
-      editMode: PropTypes.bool
+      editMode: PropTypes.object
     })),
     points: PropTypes.arrayOf(PropTypes.shape({
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
       amountPercent: PropTypes.number.isRequired,
-      editMode: PropTypes.bool
+      editMode: PropTypes.object
     })),
     incomes: PropTypes.arrayOf(PropTypes.shape({
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
       amount: PropTypes.number.isRequired,
-      editMode: PropTypes.bool
+      editMode: PropTypes.object
     }))
   })
 };
