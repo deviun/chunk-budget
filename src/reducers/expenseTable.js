@@ -27,7 +27,8 @@ const testExpenseTable = {
     {
       id: 0,
       name: 'Salary',
-      amount: 135000 
+      amount: 135000,
+      comment: 'Some comment for test'
     }
   ] 
 };

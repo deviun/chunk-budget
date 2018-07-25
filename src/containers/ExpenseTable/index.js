@@ -86,6 +86,15 @@ class ExpenseTable extends Component {
               </div>
             ))
           }
+          <ChangeableCell
+            classNames={['cell-comment']}
+            type="income"
+            id={income.id}
+            сkey={'income-comment-' + income.id}
+            value={income.comment}
+            editMode={get(income, 'editMode.comment')}
+            propName="comment"
+          />
         </div>
       )
     });
