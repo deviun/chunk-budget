@@ -8,7 +8,7 @@ import './style.css';
 // components
 import ChangeableCell from '../../components/ChangeableCell';
 // actions
-import openPopup from '../../actions/openPopup'
+import openPopup from '../../actions/openPopup';
 
 class ExpenseTable extends Component {
   render() {
@@ -187,7 +187,8 @@ ExpenseTable.propTypes = {
       editMode: PropTypes.object
     }))
   }),
-  openAddPoint: PropTypes.func.isRequired
+  openAddPoint: PropTypes.func.isRequired,
+  openEditPoint: PropTypes.func.isRequired
 };
 
 function mapStateToProps (state) {
@@ -200,6 +201,9 @@ function mapDispatchToProps (dispatch) {
   return {
     openAddPoint: () => dispatch(
       openPopup('addPoint')
+    ),
+    openEditPoint: (pointId) => dispatch(
+      openPopup('editPoint', { pointId })
     )
   };
 }
