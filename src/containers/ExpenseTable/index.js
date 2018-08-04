@@ -5,7 +5,10 @@ import get from 'lodash/get';
 
 import './style.css';
 
+// components
 import ChangeableCell from '../../components/ChangeableCell';
+// actions
+import openPopup from '../../actions/openPopup'
 
 class ExpenseTable extends Component {
   render() {
@@ -113,7 +116,7 @@ class ExpenseTable extends Component {
           {/* << render point cell titles */}
           {pointsCell}
           {/* end >> */}
-          <div className="cell button-action" key="cell-3">
+          <div className="cell button-action" key="cell-3" onClick={this.props.openAddPoint}>
             Add Point
           </div>
         </div>
@@ -183,7 +186,8 @@ ExpenseTable.propTypes = {
       amount: PropTypes.number.isRequired,
       editMode: PropTypes.object
     }))
-  })
+  }),
+  openAddPoint: PropTypes.func.isRequired
 };
 
 function mapStateToProps (state) {
@@ -192,4 +196,12 @@ function mapStateToProps (state) {
   };
 }
 
-export default connect(mapStateToProps, null)(ExpenseTable)
+function mapDispatchToProps (dispatch) {
+  return {
+    openAddPoint: () => dispatch(
+      openPopup('addPoint')
+    )
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ExpenseTable)
