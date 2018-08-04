@@ -8,9 +8,9 @@ class PointEditor extends Component {
   render() {
     return (
       <div className="point-editor">
-        <input type="text" placeholder="Point name" />
-        <input type="number" placeholder="Amount percent" min="1" max="100" />
-        <div>Left 5% for points</div>
+        <input type="text" className="name" placeholder="Point name" />
+        <input type="number" className="amount-percent" placeholder="0%" min="1" max="100" />
+        <div className="left-percents">Left 5% for points</div>
         <button>Save</button>
       </div>
     );
