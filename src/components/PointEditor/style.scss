@@ -1,0 +1,44 @@
+.point-editor {
+  padding: 10px;
+
+  input.name {
+    display: block;
+    font-size: 30px;
+    border: none;
+    outline: none;
+    margin: 0 auto;
+    text-align: center;
+    font-style: italic;
+  }
+
+
+  input.amount-percent {
+    display: block;
+    width: 100%;
+    max-width: 200px;
+    font-size: 30px;
+    border: none;
+    outline: none;
+    margin: 10px auto;
+    text-align: center;
+  }
+
+  .left-percents {
+    text-align: center;
+    opacity: 0.5;
+    padding: 5px;
+    font-size: 13px;
+  }
+
+  button {
+    display: block;
+    margin: 20px auto;
+    border: none;
+    background: #00A6FF;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    padding: 10px 25px;
+    border-radius: 30px;
+  }
+}

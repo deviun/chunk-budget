@@ -1,0 +1,23 @@
+.popup-box {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background: rgba(0, 0, 0, 0.5);
+  font-family: Arial;
+
+  .box {
+    width: 600px;
+    min-height: 250px;
+    background: white;
+    margin: 5% auto;
+    border-radius: 5px;
+
+    .popup-name {
+      font-weight: 500;
+      padding: 20px;
+      font-size: 21px;
+    }
+  }
+}
