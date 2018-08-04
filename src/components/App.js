@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Header from './Header';
 import WelcomePage from './WelcomePage';
 import ExpenseTable from '../containers/ExpenseTable';
+import Popups from '../containers/Popups';
 
 class App extends Component {
   render () {
@@ -13,6 +14,7 @@ class App extends Component {
         <Header />
         {this.props.isWelcome && <WelcomePage />}
         {!this.props.isWelcome && <ExpenseTable />}
+        <Popups />
       </div>
     );
   }
