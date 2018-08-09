@@ -69,7 +69,7 @@ class PointEditor extends Component {
         <input type="text" maxLength="24" onChange={this.modName} value={this.props.form.name} className="name" placeholder="Point name" />
         <input type="number" onChange={this.modAmountPercent} value={this.props.form.amountPercent} className="amount-percent" placeholder="0%" min="1" max="100" />
         <div className={classNames(leftPercentClassNames)}>Left {leftPercent}% for points</div>
-        {leftPercent >= 0 && saveButton}
+        {leftPercent >= 0 && this.props.form.name.length > 1 && saveButton}
       </div>
     );
   }
