@@ -13,11 +13,23 @@ import PointEditor from '../components/PointEditor';
 function CreatePoint () {
   return (
     <Popup
-      name="Create a point"
+      name="Create point"
       id="addPoint"
       key="addPoint"
     >
       <PointEditor />
+    </Popup>
+  );
+}
+
+function EditPoint (props) {
+  return (
+    <Popup
+      name="Edit point"
+      id="editPoint"
+      key="editPoint"
+    >
+      <PointEditor pointInfo={props.data.pointInfo} />
     </Popup>
   );
 }
@@ -29,7 +41,8 @@ function CreatePoint () {
 class Popups extends Component {
   static get reference () {
     return {
-      addPoint: CreatePoint
+      addPoint: CreatePoint,
+      editPoint: EditPoint
     }
   }
 
@@ -37,13 +50,13 @@ class Popups extends Component {
     return this.props.open.map((popup) => {
       const Component = Popups.reference[popup.id];
 
-      return <Component data={popup.data} />;
+      return <Component data={popup.data} key={popup.id} />;
     });
   }
 }
 
 Popups.propTypes = {
-  open: PropTypes.arrayOf(PropTypes.number).isRequired
+  open: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 function mapStateToProps(state) {

@@ -13,7 +13,7 @@ import openPopup from '../../actions/openPopup';
 class ExpenseTable extends Component {
   render() {
     const pointsCell = this.props.table.points.map((point) => (
-      <div className="cell" key={'point-' + point.id}>
+      <div className="cell cursor-pointer" key={'point-' + point.id} onClick={this.props.openEditPoint.bind(null, point)}>
         Amount/{point.name}
       </div>
     ));
@@ -202,8 +202,8 @@ function mapDispatchToProps (dispatch) {
     openAddPoint: () => dispatch(
       openPopup('addPoint')
     ),
-    openEditPoint: (pointId) => dispatch(
-      openPopup('editPoint', { pointId })
+    openEditPoint: (pointInfo) => dispatch(
+      openPopup('editPoint', { pointInfo })
     )
   };
 }

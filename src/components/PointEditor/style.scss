@@ -30,6 +30,10 @@
     font-size: 13px;
   }
 
+  .red-font-color {
+    color: red;
+  }
+
   button {
     display: block;
     margin: 20px auto;
@@ -40,5 +44,6 @@
     cursor: pointer;
     padding: 10px 25px;
     border-radius: 30px;
+    outline: none;
   }
 }
