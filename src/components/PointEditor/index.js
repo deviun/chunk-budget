@@ -8,6 +8,7 @@ import './style.css';
 // actions
 import modPointEditor from '../../actions/modPointEditor';
 import createPoint from '../../actions/createPoint';
+import closePopup from '../../actions/closePopup';
 
 class PointEditor extends Component {
   constructor (props) {
@@ -42,6 +43,7 @@ class PointEditor extends Component {
     this.save = () => {
       if (!this.props.pointInfo) {
         this.props.createPoint(this.props.form);
+        this.props.closeCreatePopup();
       }
     };
   }
@@ -80,6 +82,7 @@ PointEditor.propTypes = {
   }).isRequired,
   modPointEditor: PropTypes.func.isRequired,
   createPoint: PropTypes.func.isRequired,
+  closeCreatePopup: PropTypes.func.isRequired,
   points: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
@@ -93,7 +96,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps (dispatch) {
   return {
     modPointEditor: (nextForm) => dispatch(modPointEditor(nextForm)),
-    createPoint: (form) => dispatch(createPoint(form))
+    createPoint: (form) => dispatch(createPoint(form)),
+    closeCreatePopup: () => dispatch(closePopup('addPoint'))
   }
 }
 
