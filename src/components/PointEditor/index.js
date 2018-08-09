@@ -11,6 +11,12 @@ class PointEditor extends Component {
   constructor (props) {
     super(props);
 
+    // reset form when init component
+    this.props.modPointEditor({
+      name: '',
+      amountPercent: 0
+    });
+
     this.modName = (e) => {
       const nextForm = { ...this.props.form };
 
