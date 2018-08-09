@@ -16,7 +16,7 @@ const testExpenseTable = {
     {
       id: 0,
       name: 'First Part',
-      amountPercent: 0.4 // from amount of incomes (by default: 0.4/0.6)
+      amountPercent: 0.13 // from amount of incomes (by default: 0.4/0.6)
     }, {
       id: 1,
       name: 'Second Part',
