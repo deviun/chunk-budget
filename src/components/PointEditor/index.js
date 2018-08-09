@@ -8,6 +8,7 @@ import './style.css';
 // actions
 import modPointEditor from '../../actions/modPointEditor';
 import createPoint from '../../actions/createPoint';
+import editPoint from '../../actions/editPoint';
 import closePopup from '../../actions/closePopup';
 
 class PointEditor extends Component {
@@ -19,6 +20,15 @@ class PointEditor extends Component {
       name: '',
       amountPercent: 0
     });
+
+    // if exists pointInfo, set info top form
+    if (this.props.pointInfo) {
+      this.initAmoutPercent = this.props.pointInfo.amountPercent * 100;
+      this.props.modPointEditor({
+        name: this.props.pointInfo.name,
+        amountPercent: this.props.pointInfo.amountPercent * 100
+      });
+    }
 
     this.modName = (e) => {
       const nextForm = { ...this.props.form };
@@ -44,6 +54,9 @@ class PointEditor extends Component {
       if (!this.props.pointInfo) {
         this.props.createPoint(this.props.form);
         this.props.closeCreatePopup();
+      } else {
+        this.props.editPoint(this.props.form, this.props.pointInfo.id);
+        this.props.closeEditPopup();
       }
     };
   }
@@ -55,7 +68,11 @@ class PointEditor extends Component {
       return left;
     }, 100);
 
-    leftPercent -= this.props.form.amountPercent;
+    if (!this.props.pointInfo) {
+      leftPercent -= this.props.form.amountPercent;
+    } else {
+      leftPercent -= (this.props.form.amountPercent - this.initAmoutPercent);
+    }
 
     const saveButton = <button onClick={this.save}>Save</button>;
     const leftPercentClassNames = ['left-percents'];
@@ -83,6 +100,7 @@ PointEditor.propTypes = {
   modPointEditor: PropTypes.func.isRequired,
   createPoint: PropTypes.func.isRequired,
   closeCreatePopup: PropTypes.func.isRequired,
+  closeEditPopup: PropTypes.func.isRequired,
   points: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
@@ -97,7 +115,9 @@ function mapDispatchToProps (dispatch) {
   return {
     modPointEditor: (nextForm) => dispatch(modPointEditor(nextForm)),
     createPoint: (form) => dispatch(createPoint(form)),
-    closeCreatePopup: () => dispatch(closePopup('addPoint'))
+    editPoint: (form, id) => dispatch(editPoint(form, id)),
+    closeCreatePopup: () => dispatch(closePopup('addPoint')),
+    closeEditPopup: () => dispatch(closePopup('editPoint'))
   }
 }
 
