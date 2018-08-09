@@ -26,7 +26,7 @@ class PointEditor extends Component {
     };
 
     this.modAmountPercent = (e) => {
-      if (e.target.value > 100) {
+      if (e.target.value > 100 || e.target.value < 0) {
         return;
       }
 
