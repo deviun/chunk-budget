@@ -13,11 +13,23 @@ import PointEditor from '../components/PointEditor';
 function CreatePoint () {
   return (
     <Popup
-      name="Create a point"
+      name="Create point"
       id="addPoint"
       key="addPoint"
     >
       <PointEditor />
+    </Popup>
+  );
+}
+
+function EditPoint (props) {
+  return (
+    <Popup
+      name="Edit point"
+      id="editPoint"
+      key="editPoint"
+    >
+      <PointEditor pointInfo={props.data.pointInfo} />
     </Popup>
   );
 }
@@ -29,7 +41,8 @@ function CreatePoint () {
 class Popups extends Component {
   static get reference () {
     return {
-      addPoint: CreatePoint
+      addPoint: CreatePoint,
+      editPoint: EditPoint
     }
   }
 
