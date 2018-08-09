@@ -7,3 +7,4 @@ export const OPEN_POPUP = 'OPEN_POPUP';
 export const CLOSE_POPUP = 'CLOSE_POPUP';
 export const MOD_POINT_EDITOR = 'MOD_POINT_EDITOR';
 export const CREATE_POINT = 'CREATE_POINT';
+export const EDIT_POINT = 'EDIT_POINT';
