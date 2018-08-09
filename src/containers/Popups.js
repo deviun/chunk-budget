@@ -43,7 +43,7 @@ class Popups extends Component {
 }
 
 Popups.propTypes = {
-  open: PropTypes.arrayOf(PropTypes.number).isRequired
+  open: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 function mapStateToProps(state) {
