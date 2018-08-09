@@ -51,7 +51,7 @@ class PointEditor extends Component {
     const saveButton = <button>Save</button>;
     const leftPercentClassNames = ['left-percents'];
 
-    if (leftPercent <= 0) {
+    if (leftPercent < 0) {
       leftPercentClassNames.push('red-font-color');
     }
 
@@ -60,7 +60,7 @@ class PointEditor extends Component {
         <input type="text" maxLength="24" onChange={this.modName} value={this.props.form.name} className="name" placeholder="Point name" />
         <input type="number" onChange={this.modAmountPercent} value={this.props.form.amountPercent} className="amount-percent" placeholder="0%" min="1" max="100" />
         <div className={classNames(leftPercentClassNames)}>Left {leftPercent}% for points</div>
-        {leftPercent > 0 && saveButton}
+        {leftPercent >= 0 && saveButton}
       </div>
     );
   }
