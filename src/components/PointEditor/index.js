@@ -39,12 +39,22 @@ class PointEditor extends Component {
   }
 
   render() {
+    let leftPercent = this.props.points.reduce((left, point) => {
+      left -= point.amountPercent * 100;
+
+      return left;
+    }, 100);
+
+    leftPercent -= this.props.form.amountPercent;
+
+    const saveButton = <button>Save</button>;
+
     return (
       <div className="point-editor">
         <input type="text" maxLength="24" onChange={this.modName} value={this.props.form.name} className="name" placeholder="Point name" />
         <input type="number" onChange={this.modAmountPercent} value={this.props.form.amountPercent} className="amount-percent" placeholder="0%" min="1" max="100" />
-        <div className="left-percents">Left 5% for points</div>
-        <button>Save</button>
+        <div className="left-percents">Left {leftPercent}% for points</div>
+        {leftPercent > 0 && saveButton}
       </div>
     );
   }
@@ -55,12 +65,14 @@ PointEditor.propTypes = {
     name: PropTypes.string.isRequired,
     amountPercent: PropTypes.number.isRequired
   }).isRequired,
-  modPointEditor: PropTypes.func.isRequired
+  modPointEditor: PropTypes.func.isRequired,
+  points: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 function mapStateToProps(state) {
   return {
-    form: state.pointEditor
+    form: state.pointEditor,
+    points: state.expenseTable.points
   };
 }
 
