@@ -7,6 +7,7 @@ import './style.css';
 
 // actions
 import modPointEditor from '../../actions/modPointEditor';
+import createPoint from '../../actions/createPoint';
 
 class PointEditor extends Component {
   constructor (props) {
@@ -37,6 +38,12 @@ class PointEditor extends Component {
 
       this.props.modPointEditor(nextForm);
     };
+
+    this.save = () => {
+      if (!this.props.pointInfo) {
+        this.props.createPoint(this.props.form);
+      }
+    };
   }
 
   render() {
@@ -48,7 +55,7 @@ class PointEditor extends Component {
 
     leftPercent -= this.props.form.amountPercent;
 
-    const saveButton = <button>Save</button>;
+    const saveButton = <button onClick={this.save}>Save</button>;
     const leftPercentClassNames = ['left-percents'];
 
     if (leftPercent < 0) {
@@ -72,6 +79,7 @@ PointEditor.propTypes = {
     amountPercent: PropTypes.number.isRequired
   }).isRequired,
   modPointEditor: PropTypes.func.isRequired,
+  createPoint: PropTypes.func.isRequired,
   points: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
@@ -84,7 +92,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps (dispatch) {
   return {
-    modPointEditor: (nextForm) => dispatch(modPointEditor(nextForm))
+    modPointEditor: (nextForm) => dispatch(modPointEditor(nextForm)),
+    createPoint: (form) => dispatch(createPoint(form))
   }
 }
 
