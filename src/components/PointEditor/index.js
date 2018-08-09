@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import './style.css';
 
@@ -48,12 +49,17 @@ class PointEditor extends Component {
     leftPercent -= this.props.form.amountPercent;
 
     const saveButton = <button>Save</button>;
+    const leftPercentClassNames = ['left-percents'];
+
+    if (leftPercent <= 0) {
+      leftPercentClassNames.push('red-font-color');
+    }
 
     return (
       <div className="point-editor">
         <input type="text" maxLength="24" onChange={this.modName} value={this.props.form.name} className="name" placeholder="Point name" />
         <input type="number" onChange={this.modAmountPercent} value={this.props.form.amountPercent} className="amount-percent" placeholder="0%" min="1" max="100" />
-        <div className="left-percents">Left {leftPercent}% for points</div>
+        <div className={classNames(leftPercentClassNames)}>Left {leftPercent}% for points</div>
         {leftPercent > 0 && saveButton}
       </div>
     );
