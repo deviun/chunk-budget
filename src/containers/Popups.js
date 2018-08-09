@@ -37,7 +37,7 @@ class Popups extends Component {
     return this.props.open.map((popup) => {
       const Component = Popups.reference[popup.id];
 
-      return <Component data={popup.data} />;
+      return <Component data={popup.data} key={popup.id} />;
     });
   }
 }
