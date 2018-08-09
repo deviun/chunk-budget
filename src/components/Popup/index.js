@@ -12,7 +12,7 @@ class Popup extends Component {
     super(props);
 
     this.closePopup = (event) => {
-      if (event.currentTarget == event.target) { 
+      if (event.currentTarget === event.target) { 
         props.closePopup(props.id);
       }
     };
