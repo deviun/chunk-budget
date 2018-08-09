@@ -6,3 +6,4 @@ export const SAVE_CELL_VALUE = 'SAVE_CELL_VALUE';
 export const OPEN_POPUP = 'OPEN_POPUP';
 export const CLOSE_POPUP = 'CLOSE_POPUP';
 export const MOD_POINT_EDITOR = 'MOD_POINT_EDITOR';
+export const CREATE_POINT = 'CREATE_POINT';
