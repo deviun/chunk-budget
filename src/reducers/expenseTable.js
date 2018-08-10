@@ -2,7 +2,8 @@ import {
   TURN_EDIT_CELL,
   SAVE_CELL_VALUE,
   CREATE_POINT,
-  EDIT_POINT
+  EDIT_POINT,
+  DELETE_POINT
 } from '../actionTypes';
 
 const testExpenseTable = {
@@ -88,6 +89,12 @@ export default function expenseTable(state = testExpenseTable, action) {
 
     point.name = action.form.name;
     point.amountPercent = action.form.amountPercent / 100;
+
+    return newState;
+  } else if (action.type === DELETE_POINT) {
+    const newState = { ...state };
+    
+    newState.points = newState.points.filter((p) => p.id !== action.pointId);
 
     return newState;
   }
