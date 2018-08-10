@@ -24,10 +24,10 @@ class PointEditor extends Component {
 
     // if exists pointInfo, set info top form
     if (this.props.pointInfo) {
-      this.initAmoutPercent = this.props.pointInfo.amountPercent * 100;
+      this.initAmoutPercent = Math.round(this.props.pointInfo.amountPercent * 100);
       this.props.modPointEditor({
         name: this.props.pointInfo.name,
-        amountPercent: this.props.pointInfo.amountPercent * 100
+        amountPercent: Math.round(this.props.pointInfo.amountPercent * 100)
       });
     }
 
@@ -72,8 +72,8 @@ class PointEditor extends Component {
   }
 
   render() {
-    let leftPercent = this.props.points.reduce((left, point) => {
-      left -= point.amountPercent * 100;
+    let leftPercent = this.props.points.reduce((left, point) => {      
+      left -= Math.round(100 * point.amountPercent);
 
       return left;
     }, 100);
