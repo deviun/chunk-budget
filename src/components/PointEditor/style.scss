@@ -1,5 +1,6 @@
 .point-editor {
   padding: 10px;
+  padding-bottom: 25px;
 
   input.name {
     display: block;
@@ -34,9 +35,25 @@
     color: red;
   }
 
+  .delete-link {
+    margin: 0 auto;
+    max-width: 200px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 12px;
+    color: rgb(182, 182, 182);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
   button {
     display: block;
     margin: 20px auto;
+    margin-bottom: 10px;
     border: none;
     background: #00A6FF;
     color: white;
