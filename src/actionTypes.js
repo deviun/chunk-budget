@@ -8,3 +8,4 @@ export const CLOSE_POPUP = 'CLOSE_POPUP';
 export const MOD_POINT_EDITOR = 'MOD_POINT_EDITOR';
 export const CREATE_POINT = 'CREATE_POINT';
 export const EDIT_POINT = 'EDIT_POINT';
+export const DELETE_POINT = 'DELETE_POINT';
