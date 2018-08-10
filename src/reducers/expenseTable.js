@@ -74,7 +74,7 @@ export default function expenseTable(state = testExpenseTable, action) {
     return newState;
   } else if (action.type === CREATE_POINT) {
     const newState = { ...state };
-    const lastPoint = newState.points[newState.points.length - 1];
+    const lastPoint = newState.points[newState.points.length - 1] || {id: -1};
 
     newState.points.push({
       name: action.form.name,
