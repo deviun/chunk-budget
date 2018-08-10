@@ -85,7 +85,7 @@ class PointEditor extends Component {
     }
 
     const saveButton = <button onClick={this.save}>Save</button>;
-    const deleteLink = <div class="delete-link" onClick={this.delete}>Delete this Point</div>;
+    const deleteLink = <div className="delete-link" onClick={this.delete}>Delete this Point</div>;
     const leftPercentClassNames = ['left-percents'];
 
     if (leftPercent < 0) {
