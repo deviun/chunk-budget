@@ -10,6 +10,7 @@ import modPointEditor from '../../actions/modPointEditor';
 import createPoint from '../../actions/createPoint';
 import editPoint from '../../actions/editPoint';
 import closePopup from '../../actions/closePopup';
+import deletePoint from '../../actions/deletePoint';
 
 class PointEditor extends Component {
   constructor (props) {
@@ -23,10 +24,10 @@ class PointEditor extends Component {
 
     // if exists pointInfo, set info top form
     if (this.props.pointInfo) {
-      this.initAmoutPercent = this.props.pointInfo.amountPercent * 100;
+      this.initAmoutPercent = Math.round(this.props.pointInfo.amountPercent * 100);
       this.props.modPointEditor({
         name: this.props.pointInfo.name,
-        amountPercent: this.props.pointInfo.amountPercent * 100
+        amountPercent: Math.round(this.props.pointInfo.amountPercent * 100)
       });
     }
 
@@ -59,11 +60,20 @@ class PointEditor extends Component {
         this.props.closeEditPopup();
       }
     };
+
+    this.delete = () => {
+      if (!this.props.pointInfo) {
+        return this.props.closeCreatePopup();
+      }
+
+      this.props.deletePoint(this.props.pointInfo.id);
+      this.props.closeEditPopup();
+    };
   }
 
   render() {
-    let leftPercent = this.props.points.reduce((left, point) => {
-      left -= point.amountPercent * 100;
+    let leftPercent = this.props.points.reduce((left, point) => {      
+      left -= Math.round(100 * point.amountPercent);
 
       return left;
     }, 100);
@@ -75,6 +85,7 @@ class PointEditor extends Component {
     }
 
     const saveButton = <button onClick={this.save}>Save</button>;
+    const deleteLink = <div className="delete-link" onClick={this.delete}>Delete this Point</div>;
     const leftPercentClassNames = ['left-percents'];
 
     if (leftPercent < 0) {
@@ -87,6 +98,7 @@ class PointEditor extends Component {
         <input type="number" onChange={this.modAmountPercent} value={this.props.form.amountPercent} className="amount-percent" placeholder="0%" min="1" max="100" />
         <div className={classNames(leftPercentClassNames)}>Left {leftPercent}% for points</div>
         {leftPercent >= 0 && this.props.form.name.length > 1 && saveButton}
+        {this.props.pointInfo && deleteLink}
       </div>
     );
   }
@@ -101,6 +113,7 @@ PointEditor.propTypes = {
   createPoint: PropTypes.func.isRequired,
   closeCreatePopup: PropTypes.func.isRequired,
   closeEditPopup: PropTypes.func.isRequired,
+  deletePoint: PropTypes.func.isRequired,
   points: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
@@ -117,7 +130,8 @@ function mapDispatchToProps (dispatch) {
     createPoint: (form) => dispatch(createPoint(form)),
     editPoint: (form, id) => dispatch(editPoint(form, id)),
     closeCreatePopup: () => dispatch(closePopup('addPoint')),
-    closeEditPopup: () => dispatch(closePopup('editPoint'))
+    closeEditPopup: () => dispatch(closePopup('editPoint')),
+    deletePoint: (id) => dispatch(deletePoint(id))
   }
 }
 
